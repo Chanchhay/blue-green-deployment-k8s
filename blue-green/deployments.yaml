@@ -1,0 +1,51 @@
+# Blue version
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deploy
+  labels:
+    name: myapp
+    env: blue
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: myapp
+      env: blue
+  template:
+    metadata:
+      labels:
+        app: myapp
+        env: blue
+    spec:
+      containers:
+      - name: myapp
+        image: nginx
+        ports:
+        - containerPort: 80
+---
+# Green version
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: react-deploy
+  labels:
+    name: myapp
+    env: green
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: myapp
+      env: green
+  template:
+    metadata:
+      labels:
+        app: myapp
+        env: green
+    spec:
+      containers:
+      - name: myapp
+        image: chanchhayy/reactjs-sonar-webhook:v1.0.3
+        ports:
+        - containerPort: 80
