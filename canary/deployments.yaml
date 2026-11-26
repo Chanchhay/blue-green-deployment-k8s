@@ -41,6 +41,6 @@ spec:
     spec:
       containers:
       - name: myapp
-        image: 69966/earthdx:78
+        image: chanchhayy/reactjs-sonar-webhook:v1.0.3
         ports:
         - containerPort: 80

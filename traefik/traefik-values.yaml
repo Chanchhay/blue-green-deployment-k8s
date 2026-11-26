@@ -1,0 +1,23 @@
+deployment:
+  kind: DaemonSet
+
+ports:
+  traefik:
+    hostPort: 8080
+  web:
+    port: 8000
+    hostPort: 80
+  websecure:
+    port: 8443
+    hostPort: 443
+
+service:
+  enabled: true
+  spec:
+    type: ClusterIP
+
+providers:
+  kubernetesIngress:
+    enabled: true
+  kubernetesCRD:
+    enabled: true
